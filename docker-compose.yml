@@ -8,12 +8,12 @@ services:
       context: .
       dockerfile: docker/go/Dockerfile
     ports:
-      - "8000:8000"
+      - "${SERVICE_PORT}:8080"
+      - "${SERVICE_PORT_2}:8081"
     environment:
       DD_DB_HOST: db
     depends_on:
       - db
-    tty: true
   db:
     container_name: valent-excolator-jobs-db
     image: postgres:13.2-alpine
