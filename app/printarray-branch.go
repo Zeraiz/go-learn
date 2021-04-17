@@ -10,25 +10,25 @@ import (
 	"time"
 )
 
-func printNameFunc(i interface{}){
+func printNameFunc(i interface{}) {
 	fmt.Println(runtime.FuncForPC(reflect.ValueOf(i).Pointer()).Name())
 }
 
-func checkTimeForFunction(f func()){
+func checkTimeForFunction(f func()) {
 	start := time.Now()
 	f()
 	end := time.Now()
-	fmt.Println(strings.Join([]string{"Time spended: ", end.Sub(start).String(), "\n"}, ""));
+	fmt.Println(strings.Join([]string{"Time spended: ", fmt.Sprintf("%f", end.Sub(start).Seconds()), "\n"}, ""))
 }
 
-func printArgsOneByOneLine()  {
-	for i, el := range os.Args[1:]{
+func printArgsOneByOneLine() {
+	for i, el := range os.Args[1:] {
 		fmt.Println("Index: " + strconv.Itoa(i) + " Argument: " + el)
 	}
 }
 
-func printArgsOneByOneLineASJoin()  {
-	for i, el := range os.Args[1:]{
+func printArgsOneByOneLineASJoin() {
+	for i, el := range os.Args[1:] {
 		fmt.Println(strings.Join([]string{"Index: ", strconv.Itoa(i), " Argument: ", el}, ""))
 	}
 }
